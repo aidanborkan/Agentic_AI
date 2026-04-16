@@ -39,7 +39,7 @@ The app uses a LangGraph state machine with the following major steps:
 - `validate_and_rank`
 - `finalize_answer`
 
-The ReAct loop continues until the model stops requesting tools.
+The ReAct loop continues until the model no longer requests tools.
 
 ## Architecture
 
@@ -86,6 +86,12 @@ START
   ↓
 load_accession_context
   ↓
-react_model
-  ├── if tool calls → tool_node → collect_candidates → react_model
-  └── if no tool calls → validate_and_rank → finalize_answer → END
+react_plan
+  ├── if tools requested → execute_tools
+  └── if done / no tools → validate_and_rank
+               ↓
+       validate_and_rank
+               ↓
+         finalize_answer
+               ↓
+              END
