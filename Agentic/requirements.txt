@@ -1,0 +1,14 @@
+langchain
+langgraph
+langchain-ollama
+os
+langsmith
+python-dotenv
+pydantic
+requests
+pandas
+streamlit
+faiss-cpu
+sentence-transformers
+ipython
+graphviz
